@@ -1,12 +1,27 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Tippy from '@tippyjs/react/headless';
+import tippy from 'tippy.js/headless';
+import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
+
+import AccountItem from '~/components/AccountItem';
+
 const cx = classNames.bind(styles);
 
 const Header = () => {
+    const [searchResult, setSearchResult] = useState([]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setSearchResult([]);
+        }, 1000);
+    });
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -15,23 +30,42 @@ const Header = () => {
                         <img src={images.logo} alt="Tiktok" />
                     </a>
                 </div>
-                <div className={cx('search')}>
-                    <input
-                        type="text"
-                        placeholder="Search accounts and videos"
-                        spellCheck={false}
-                        className={cx('search-input')}
-                    />
-                    <button className={cx('clear-btn')}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </button>
-                    <button className={cx('loading-btn')}>
-                        <FontAwesomeIcon icon={faSpinner} />
-                    </button>
-                    <div className={cx('search-btn')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                <Tippy
+                    interactive={true}
+                    visible={searchResult.length > 0}
+                    placement="bottom-start"
+                    render={(attrs) => (
+                        <div className="box" tabIndex="-1" {...attrs}>
+                            <PopperWrapper>
+                                <h3 className={cx('search-title')}>Accounts</h3>
+                                <ul className={cx('search-result')}>
+                                    <AccountItem />
+                                    <AccountItem />
+                                    <AccountItem />
+                                    <AccountItem />
+                                </ul>
+                            </PopperWrapper>
+                        </div>
+                    )}
+                >
+                    <div className={cx('search')}>
+                        <input
+                            type="text"
+                            placeholder="Search accounts and videos"
+                            spellCheck={false}
+                            className={cx('search-input')}
+                        />
+                        <button className={cx('clear-btn')}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                        <button className={cx('loading-btn')}>
+                            <FontAwesomeIcon icon={faSpinner} />
+                        </button>
+                        <div className={cx('search-btn')}>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        </div>
                     </div>
-                </div>
+                </Tippy>
                 <div className={cx('actions')}>actions</div>
             </div>
         </header>
