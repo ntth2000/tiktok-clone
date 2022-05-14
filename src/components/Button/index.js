@@ -39,6 +39,8 @@ const Button = ({
         props.href = href;
         Component = 'a';
     }
+
+    //if button is disabled => delete all event listeners
     if (disabled) {
         Object.keys(props).forEach((key) => {
             if (key.startsWith('on') && typeof props[key] === 'function') {
