@@ -23,3 +23,32 @@
         background-color: rgba(22, 24, 35, 0.03);
     }
 }
+
+//header
+.header {
+    --header-height: 50px;
+
+    position: relative;
+    height: var(--header-height);
+    cursor: pointer;
+    margin-top: -8px;
+}
+.header-title {
+    font-weight: 600;
+    line-height: var(--header-height);
+    text-align: center;
+    width: 100%;
+}
+.header-icon {
+    width: var(--header-height);
+    height: 100%;
+    font-size: 1.7rem;
+    padding-left: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    &:hover {
+        cursor: pointer;
+    }
+}

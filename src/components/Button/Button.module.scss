@@ -1,5 +1,5 @@
 .wrapper {
-    padding: 9px 16px;
+    padding: 8px 16px;
     min-width: 100px;
     border-radius: 4px;
     text-align: center;
@@ -12,6 +12,7 @@
     background-color: var(--white);
     border: 1px solid transparent;
     user-select: none;
+    line-height: 1.8rem;
 
     + .wrapper {
         margin-left: 16px;

@@ -3,6 +3,7 @@
     --search-top-space: 9px;
     --search-btn-width: 52px;
     --input-clear-width: 40px;
+    --default-layout-header-spacer: 24px;
 
     height: var(--default-layout-header-height);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
@@ -15,6 +16,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-left: var(--default-layout-header-spacer);
+    padding-right: var(--default-layout-header-spacer);
 }
 .logo {
     display: flex;
