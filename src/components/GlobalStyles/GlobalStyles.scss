@@ -27,13 +27,19 @@ body {
 ul {
     list-style: none;
 }
+li {
+    list-style: none;
+}
 button,
 input,
 [tabindex] {
     outline: none;
     border: none;
 }
-
+button {
+    background-color: transparent;
+}
 a[href] {
+    color: inherit;
     text-decoration: none;
 }

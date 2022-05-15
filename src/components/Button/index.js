@@ -5,15 +5,11 @@ import styles from './Button.module.scss';
 const cx = classNames.bind(styles);
 const Button = ({
     disabled = false,
-    //types
-    primary = false,
-    outline = false,
-    text = false,
-    rounded = false,
-    //sizes - default: medium
-    small = false,
-    large = false,
-    //attributes - define Component
+    //types: primary, outline, text, rounded
+    type = [],
+    //sizes:s, m, l - default: medium
+    size,
+    //attributes - define Component: button, a, Link - default: button
     to,
     href,
     //icons
@@ -44,25 +40,19 @@ const Button = ({
     if (disabled) {
         Object.keys(props).forEach((key) => {
             if (key.startsWith('on') && typeof props[key] === 'function') {
-                console.log('hello');
                 delete props[key];
             }
         });
     }
 
-    const classes = cx('wrapper', {
+    const classes = cx('wrapper', ...type, {
         [className]: className,
-        primary,
-        outline,
-        text,
+        [size]: size,
         disabled,
-        rounded,
-        small,
-        large,
     });
     return (
         <Component className={classes} {...props}>
-            {/* {leftIcon && <span className={cx('icon')}>{leftIcon}</span>} */}
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
             <span className={cx('title')}>{children}</span>
         </Component>
     );
