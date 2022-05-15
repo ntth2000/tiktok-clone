@@ -3,10 +3,11 @@ import Button from '~/components/Button';
 
 import styles from './Menu.module.scss';
 const cx = classNames.bind(styles);
-
 const MenuItem = ({ data, onClick }) => {
+    const classes = cx('menu-item', { separated: data.separated });
+
     return (
-        <Button leftIcon={data.icon} to={data.to} className={cx('menu-item')} onClick={onClick}>
+        <Button leftIcon={data.icon} to={data.to} className={classes} onClick={onClick}>
             {data.title}
         </Button>
     );
