@@ -3,6 +3,7 @@ import Following from '~/pages/Following';
 import Upload from '~/pages/Upload';
 
 import { HeaderOnly } from '~/components/Layouts';
+import Profile from '~/pages/Profile';
 export const publicRoutes = [
     {
         path: '/',
@@ -11,6 +12,10 @@ export const publicRoutes = [
     {
         path: '/following',
         component: Following,
+    },
+    {
+        path: '/@:nickname',
+        component: Profile,
     },
     {
         path: '/upload',
