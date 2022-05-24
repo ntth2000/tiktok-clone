@@ -129,7 +129,7 @@ input:not(:placeholder-shown) {
     font-size: 2.2rem;
     color: rgb(22, 24, 35);
     padding: 0px 3px;
-
+    display: flex;
     + .action-btn {
         margin-left: 16px;
     }
