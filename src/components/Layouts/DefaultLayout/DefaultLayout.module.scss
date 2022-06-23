@@ -1,9 +1,7 @@
-.wrapper {
-}
 .container {
     width: var(--default-layout-width);
     display: flex;
-    margin: 0 auto;
+    margin-top: var(--default-layout-header-height);
 }
 .content {
     flex: 1;
