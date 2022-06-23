@@ -2,6 +2,7 @@
 :root {
     --primary: #fe2c55;
     --white: #fff;
+    --font-family: 'ProximaNova', sans-serif;
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
     --default-layout-sidebar-width: 356px;
@@ -17,7 +18,7 @@ html {
     font-size: 62.5%;
 }
 body {
-    font-family: ProximaNova, sans-serif;
+    font-family: var(--font-family);
     // line-height: 1.5;
     font-size: 1.6rem;
     text-rendering: optimizeSpeed;
@@ -37,7 +38,7 @@ input,
 }
 button {
     background-color: transparent;
-    font-family: 'ProximaNova', sans-serif;
+    font-family: var(--font-family);
 }
 a[href] {
     color: inherit;
