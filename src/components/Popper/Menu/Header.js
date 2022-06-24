@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { ChervonLeft } from '~/components/Icons';
 
@@ -14,5 +15,8 @@ const Header = ({ title, onBack }) => {
         </header>
     );
 };
-
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+    onBack: PropTypes.func.isRequired,
+};
 export default Header;
