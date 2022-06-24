@@ -37,7 +37,7 @@ const Search = () => {
             setLoading(false);
         };
         fetchApi();
-    }, [debouncedValue]);
+    }, [debouncedValue, searchValue, searchResult.length]);
 
     const handleClear = () => {
         setSearchValue('');
