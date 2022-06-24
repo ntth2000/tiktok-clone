@@ -21,7 +21,7 @@ const Search = () => {
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     useEffect(() => {
         if (!searchValue) {
@@ -32,12 +32,12 @@ const Search = () => {
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await search(debounced);
+            const result = await search(debouncedValue);
             setSearchResult(result);
             setLoading(false);
         };
         fetchApi();
-    }, [debounced]);
+    }, [debouncedValue]);
 
     const handleClear = () => {
         setSearchValue('');

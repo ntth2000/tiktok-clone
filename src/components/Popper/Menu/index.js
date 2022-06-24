@@ -32,6 +32,23 @@ const Menu = ({ placement = 'bottom', items = [], onChange = defaultFn, hideOnCl
             );
         });
     };
+    const handleBack = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <PopperWrapper className={cx('menu-popper')}>
+                {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
+                <div className={cx('menu-body')}>{renderItems()}</div>
+            </PopperWrapper>
+        </div>
+    );
+
+    const handleReturnToFirstPage = () => {
+        setHistory((prev) => [prev[0]]);
+    };
+
     return (
         <Tippy
             offset={[12, 12]}
@@ -39,29 +56,14 @@ const Menu = ({ placement = 'bottom', items = [], onChange = defaultFn, hideOnCl
             hideOnClick={hideOnClick}
             interactive={true}
             placement={placement}
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx('menu-popper')}>
-                        {history.length > 1 && (
-                            <Header
-                                title={current.title}
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
-                            />
-                        )}
-                        <div className={cx('menu-body')}>{renderItems()}</div>
-                    </PopperWrapper>
-                </div>
-            )}
-            onHide={() => {
-                setHistory((prev) => [prev[0]]);
-            }}
+            render={renderResult}
+            onHide={handleReturnToFirstPage}
         >
             {children}
         </Tippy>
     );
 };
+
 Menu.propTypes = {
     placement: PropTypes.string,
     items: PropTypes.array,
@@ -69,4 +71,5 @@ Menu.propTypes = {
     hideOnClick: PropTypes.bool,
     children: PropTypes.node.isRequired,
 };
+
 export default Menu;
